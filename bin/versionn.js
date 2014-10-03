@@ -5,6 +5,9 @@
  * 
  * @copyright (C) 2014- commenthol
  * @license MIT
+ * 
+ * @credits Christopher Jeffrey <https://github.com/chjj/marked> 
+ *   Code snippets taken from marked project (MIT license) 
  */
 
 'use strict';
@@ -15,8 +18,6 @@ var _ = require('underscore'),
     async = require('async'),
     child = require('child_process'),
     Version = require('../lib/index');
-
-var L = console.log;
 
 function help() {
   var options = {
