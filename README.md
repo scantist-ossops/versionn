@@ -60,6 +60,8 @@ versionn [--premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|
 -h|--help
     Display help information.
 
+--version
+    Display version.
 ```
 
 **Examples:**
