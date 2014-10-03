@@ -2,15 +2,17 @@
 
 /**
  * versionn CLI
- * 
+ *
  * @copyright (C) 2014- commenthol
  * @license MIT
- * 
- * @credits Christopher Jeffrey <https://github.com/chjj/marked> 
- *   Code snippets taken from marked project (MIT license) 
+ *
+ * @credits Christopher Jeffrey <https://github.com/chjj/marked>
+ *   Code snippets taken from marked project (MIT license)
  */
 
 'use strict';
+
+var VERSION = "0.0.2";
 
 var _ = require('underscore'),
     fs = require('fs'),
@@ -47,13 +49,13 @@ function gittag(version, options, callback) {
   fs.exists(path.resolve(_options.cwd, '.git'), function(exists){
     if (exists) {
       child.exec(cmd + 'v' + version,
-        _options, 
+        _options,
         function(err, stdout, stderr){
           if (err) {
             return callback(err);
           }
           callback();
-        });      
+        });
     }
     else {
       callback(new Error('No .git directory in ' + _options.cwd));
@@ -114,7 +116,8 @@ function main(argv, callback) {
       case '-e':
       case '--extract': {
         arg = getarg();
-        options.extract = arg;
+        options.extract = true;
+        options.extractFile = arg;
         break;
       }
       case '-t':
@@ -126,6 +129,10 @@ function main(argv, callback) {
       case '--untag': {
         options.untag = true;
         break;
+      }
+      case '--version': {
+        console.log(VERSION);
+        return;
       }
       default: {
         if (arg.indexOf('-') === 0) {
@@ -142,9 +149,9 @@ function main(argv, callback) {
     }
   }
 
-  options.cmd = options.cmd || 'patch';
 
   if (files.length === 0) {
+    options.defaultFiles = true;
     files = main.files;
   }
   files = files.map(function(file){
@@ -154,18 +161,18 @@ function main(argv, callback) {
 
   async.filter(files, fs.exists, function(files){
     if (files.length > 0) {
-      options.extract = options.extract ? 
-                        path.resolve(options.dir, options.extract) : 
-                        files[0];
-      fs.exists(options.extract, function(exists) {
+      options.extractFile = options.extractFile ?
+                            path.resolve(options.dir, options.extractFile) :
+                            files[0];
+      fs.exists(options.extractFile, function(exists) {
         if (!exists) {
-          console.error('Error: No file to extract version from: '+ options.extract +'!');
+          console.error('Error: No file to extract version from: '+ options.extractFile +'!');
           return callback(null, 1);
         }
-        var v = new Version(options.extract);
+        var v = new Version(options.extractFile);
         v.extract(function(err, version) {
           if (err) {
-            console.error('Error: no version info found in ' + options.extract);
+            console.error('Error: No version info found in ' + options.extractFile);
             return callback(null,1);
           }
           if (options.tag || options.untag) {
@@ -177,7 +184,10 @@ function main(argv, callback) {
               callback();
             });
           } else {
-            v.inc(options.cmd);
+            if (! (options.extract === true && options.cmd === undefined)) {
+              options.cmd = options.cmd || 'patch';
+              v.inc(options.cmd);
+            }
             Version.changeFiles(files, v.version, function(err) {
               if (err.length > 0) {
                 err.forEach(function(f){
@@ -196,7 +206,7 @@ function main(argv, callback) {
       callback(null, 1);
     }
   });
-  
+
 }
 
 main.files = [ 'VERSION', 'package.json', 'bower.json', 'component.json' ];

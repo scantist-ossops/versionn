@@ -1,11 +1,13 @@
 {
   "name": "versionn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "increase version number across package.json, component.json, bower.json and other files",
   "main": "index.js",
   "bin": {
     "versionn": "./bin/versionn.js"
   },
+  "man": "./man/versionn.1",
+  "preferGlobal": true,
   "maintainers": [
     {
       "name": "commenthol",
@@ -36,6 +38,7 @@
     "underscore": "^1.7.0"
   },
   "devDependencies": {
+    "mocha": "^1.21.4",
     "shelljs": "^0.3.0"
   }
 }
