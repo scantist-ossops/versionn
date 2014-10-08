@@ -1,15 +1,17 @@
 .ds q \N'34'
-.TH versionn 1 "2014-10-03" "v0.0.2" "versionn.js"
+.TH versionn 1 "2014-10-08" "v0.0.3" "versionn.js"
 
 .SH NAME
 versionn \- set semver version across multiple files
 
 .SH SYNOPSIS
 .B versionn
-[\-\-premajor|\-\-preminor|\-\-prepatch|\-\-prerelease|\-\-major|\-\-minor|\-\-patch|\-\-pre] 
-[\-e \fI<file>\fP] 
+[\-\-premajor|\-\-preminor|\-\-prepatch|\-\-prerelease|\-\-major|\-\-minor|\-\-patch|\-\-pre]
+[\-e \fI<file>\fP]
 [\-d \fI<dir>\fP]
-[\-t] [\-u] [\-\-help] [\-\-version] [\fIfilenames\fP]
+[\-t] [\-u] [\-\-help]
+[\-\-info]
+[\-\-version] [\fIfilenames\fP]
 
 .SH DESCRIPTION
 .B versionn
@@ -35,7 +37,7 @@ Choose a different directory other that the current-working-directory:
 .TP
 versionn -t
 .TP.TP
-Git-tag the version 
+Git-tag the version
 versionn -u
 .TP.TP
 Remove the Git-tag of the current version
@@ -56,6 +58,9 @@ Set Git version tag
 .TP
 .BI \-u,\ \-\-untag
 Unset Git version tag
+.TP
+.BI \-i,\ \-\-info
+Display version information of inspected project.
 .TP
 .BI \-h,\ \-\-help
 Display help information.

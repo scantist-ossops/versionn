@@ -57,6 +57,9 @@ versionn [--premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|
 -u|--untag
     Delete Git version tag
     
+-i|--info
+    Display version information of inspected project.
+
 -h|--help
     Display help information.
 

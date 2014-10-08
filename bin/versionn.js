@@ -12,7 +12,7 @@
 
 'use strict';
 
-var VERSION = "0.0.2";
+var VERSION = "0.0.3";
 
 var _ = require('underscore'),
     fs = require('fs'),
@@ -107,6 +107,11 @@ function main(argv, callback) {
       case '--help': {
         return help();
       }
+      case '-i':
+      case '--info': {
+        options.info = true;
+        break;
+      }
       case '-d':
       case '--dir': {
         arg = getarg();
@@ -174,8 +179,10 @@ function main(argv, callback) {
           if (err) {
             console.error('Error: No version info found in ' + options.extractFile);
             return callback(null,1);
-          }
-          if (options.tag || options.untag) {
+          } else if (options.info) {
+            console.log(version);
+            callback();
+          } else if (options.tag || options.untag) {
             gittag(v.version, options, function(err){
               if (err) {
                 console.error('Error: git tag ' + err.message);

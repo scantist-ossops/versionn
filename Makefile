@@ -1,6 +1,6 @@
 DATE ?= $(shell date +%Y-%m-%d)
 VERSION ?= $(shell cat VERSION)
-INC = "--patch"
+INC = --patch
 
 files = versionn.1
 
