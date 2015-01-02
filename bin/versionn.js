@@ -12,7 +12,7 @@
 
 'use strict';
 
-var VERSION = "0.0.4";
+var VERSION = "0.0.5-0";
 
 var _ = require('underscore'),
     fs = require('fs'),

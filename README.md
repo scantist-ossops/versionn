@@ -29,7 +29,7 @@ VERSION = "<semver>"
 
 To increment the version information you can choose one of the commands:
 
-    premajor|preminor|prepatch|prerelease|major|minor|patch|pre
+    premajor|preminor|prepatch|prerelease|major|minor|patch|pre|same
 
 ## Installation
 
