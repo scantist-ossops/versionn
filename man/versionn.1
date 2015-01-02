@@ -1,12 +1,12 @@
 .ds q \N'34'
-.TH versionn 1 "2014-10-08" "v0.0.3" "versionn.js"
+.TH versionn 1 "2015-01-02" "v0.0.4" "versionn.js"
 
 .SH NAME
 versionn \- set semver version across multiple files
 
 .SH SYNOPSIS
 .B versionn
-[\-\-premajor|\-\-preminor|\-\-prepatch|\-\-prerelease|\-\-major|\-\-minor|\-\-patch|\-\-pre]
+[\-\-premajor|\-\-preminor|\-\-prepatch|\-\-prerelease|\-\-major|\-\-minor|\-\-patch|\-\-pre|\-\-same]
 [\-e \fI<file>\fP]
 [\-d \fI<dir>\fP]
 [\-t] [\-u] [\-\-help]
@@ -46,6 +46,9 @@ Remove the Git-tag of the current version
 .TP
 .BI \-\-premajor|\-\-preminor|\-\-prepatch|\-\-prerelease|\-\-major|\-\-minor|\-\-patch|\-\-pre
 Increase the version by ...
+.TP
+.BI \-\-same
+Update all version tags to the first version found
 .TP
 .BI \-e,\ \-\-extract\ \fI<file>\fP
 Extract version information from <file>

@@ -1,6 +1,7 @@
 /node_modules
-/tmp
+/coverage
 /test/tmp
+/tmp
 /*.tgz
+/*.log
 /.*
-/npm-debug.log

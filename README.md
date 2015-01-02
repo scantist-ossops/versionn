@@ -2,14 +2,14 @@
 
 > Change Version information across multiple files
 
-Changes Version information in 
+Changes Version information in
 
 * package.json
 * component.json
 * bower.json
 * any other file of choice containing a `VERSION` variable
 
-Offering a module with support for npm, bower, component, ... requires to update the version information in the various files. 
+Offering a module with support for npm, bower, component, ... requires to update the version information in the various files.
 `versionn` helps here to keep all the version numbers within the files in sync.
 
 You can either use a file called `VERSION` in the root folder of your project which just contains the [semver][] version, or just use the information contained in `package.json`, `bower.json` or `component.json`.
@@ -40,23 +40,26 @@ npm install -g versionn
 ## Usage
 
 ```
-versionn [--premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|--pre] [-e <file>] [-d <dir>] [-t] [-u] [filenames]
+versionn [--premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|--pre|--same] [-e <file>] [-d <dir>] [-t] [-u] [filenames]
 
 --premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|--pre
     Increase Version by ...
-    
+
+--same
+    Update all version tags to the first version found
+
 -e|--extract <file>
     extract version information from <file>
-    
+
 -d|--dir <dir>
     apply versionn in directory <dir>
-    
+
 -t|--tag
     Set Git version tag
-    
+
 -u|--untag
     Delete Git version tag
-    
+
 -i|--info
     Display version information of inspected project.
 
@@ -72,23 +75,23 @@ versionn [--premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|
 Increments the `patch` version of `VERSION`, `package.json`, `bower.json`, `component.json`:
 
     versionn
-    
+
 Increment the `minor` version of `package.json` only:
 
     versionn --minor package.json
-    
+
 Extract the version from `VERSION` and increase `bower.json` and `component.json` by `premajor` version. Note: `VERSION` will *NOT* be increased!
 
     versionn --premajor -e VERSION bower.json component.json
-    
+
 Choose a different directory other that the current-working-directory:
 
     versionn -d <otherdir>
-    
-Git-tag the version 
+
+Git-tag the version
 
     versionn -t
-    
+
 Remove the Git-tag with:
 
     versionn -u
@@ -101,7 +104,7 @@ all code is your original work.
 
 ## License
 
-Copyright (c) 2014 commenthol    
+Copyright (c) 2014 commenthol
 Software is released under [MIT][license].
 
 [license]: ./LICENSE

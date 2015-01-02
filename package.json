@@ -1,12 +1,12 @@
 {
   "name": "versionn",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "increase version number across package.json, component.json, bower.json and other files",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
-    "versionn": "./bin/versionn.js"
+    "versionn": "bin/versionn.js"
   },
-  "man": "./man/versionn.1",
+  "man": "man/versionn.1",
   "preferGlobal": true,
   "maintainers": [
     {
@@ -18,7 +18,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "jshint */*.js",
+    "cover": "istanbul cover _mocha --report lcov --report text -- -R dot --check-leaks"
   },
   "repository": {
     "type": "git",
