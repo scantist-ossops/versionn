@@ -40,12 +40,12 @@ npm install -g versionn
 ## Usage
 
 ```
-versionn [--premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|--pre|--same] [-e <file>] [-d <dir>] [-t] [-u] [filenames]
+versionn [premajor|preminor|prepatch|prerelease|major|minor|patch|pre|same] [-e <file>] [-d <dir>] [-t] [-u] [filenames]
 
---premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|--pre
+premajor|preminor|prepatch|prerelease|major|minor|patch|pre
     Increase Version by ...
 
---same
+same
     Update all version tags to the first version found
 
 -e|--extract <file>
@@ -72,17 +72,17 @@ versionn [--premajor|--preminor|--prepatch|--prerelease|--major|--minor|--patch|
 
 **Examples:**
 
-Increments the `patch` version of `VERSION`, `package.json`, `bower.json`, `component.json`:
+Applies the same version to all files `VERSION`, `package.json`, `bower.json`, `component.json`:
 
     versionn
 
 Increment the `minor` version of `package.json` only:
 
-    versionn --minor package.json
+    versionn minor package.json
 
 Extract the version from `VERSION` and increase `bower.json` and `component.json` by `premajor` version. Note: `VERSION` will *NOT* be increased!
 
-    versionn --premajor -e VERSION bower.json component.json
+    versionn premajor -e VERSION bower.json component.json
 
 Choose a different directory other that the current-working-directory:
 
