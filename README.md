@@ -40,7 +40,7 @@ npm install -g versionn
 ## Usage
 
 ```
-versionn [premajor|preminor|prepatch|prerelease|major|minor|patch|pre|same] [-e <file>] [-d <dir>] [-t] [-u] [filenames]
+versionn [premajor|preminor|prepatch|prerelease|major|minor|patch|pre|same|set] [-e <file>] [-d <dir>] [-t] [-u] [filenames]
 
 premajor|preminor|prepatch|prerelease|major|minor|patch|pre
     Increase Version by ...
@@ -48,22 +48,28 @@ premajor|preminor|prepatch|prerelease|major|minor|patch|pre
 same
     Update all version tags to the first version found
 
--e|--extract <file>
+set <version>
+    Sets all version tags to <version>
+
+-e, --extract <file>
     extract version information from <file>
 
--d|--dir <dir>
+-d, --dir <dir>
     apply versionn in directory <dir>
 
--t|--tag
+-t, --tag
     Set Git version tag
 
--u|--untag
+-u, --untag
     Delete Git version tag
 
--i|--info
+-c, --commit
+   Git commit with version tag
+
+-i, --info
     Display version information of inspected project.
 
--h|--help
+-h, --help
     Display help information.
 
 --version
@@ -104,7 +110,7 @@ all code is your original work.
 
 ## License
 
-Copyright (c) 2014 commenthol
+Copyright (c) 2016 commenthol
 Software is released under [MIT][license].
 
 [license]: ./LICENSE
