@@ -18,8 +18,9 @@
     "test": "test"
   },
   "scripts": {
+    "dist": "npm run lint && npm test && npm version",
     "test": "mocha",
-    "lint": "eslint '*/*.js'",
+    "lint": "eslint '**/*.js'",
     "cover": "istanbul cover _mocha --report lcov --report text -- -R dot --check-leaks"
   },
   "repository": {
@@ -35,7 +36,7 @@
   "author": "commenthol",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.1.4",
+    "asyncc": "^0.1.0",
     "semver": "^5.3.0"
   },
   "devDependencies": {

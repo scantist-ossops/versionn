@@ -13,7 +13,7 @@ var VERSION = '1.0.0'
 
 var fs = require('fs')
 var path = require('path')
-var async = require('async')
+var asyncc = require('asyncc')
 var child = require('child_process')
 var Version = require('../lib/index')
 var cli = Version._.cli
@@ -56,10 +56,10 @@ function main (argv, callback) {
   // console.log(options)
   var v
 
-  async.series([
+  asyncc.series([
     // check if files exists
     function (cb) {
-      async.map(options.files, fs.stat, function (err, files) {
+      asyncc.each(options.files, fs.stat, function (err, files) {
         err = null
         files = options.files.map(function (file, i) {
           if (files[i]) {
