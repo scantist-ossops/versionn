@@ -11,7 +11,7 @@
 
 var assert = require('assert')
 var path = require('path')
-var async = require('async')
+var async = require('asyncc')
 var sh = require('shelljs')
 
 var Version = require('../lib/index')
@@ -242,7 +242,7 @@ describe('change multiple files', function () {
       if (v.inc('minor')) {
         Version.changeFiles(files, v.version, function (err) {
           assert.equal(err.length, 0)
-          async.eachLimit(files, 5,
+          async.eachLimit(5, files,
             function (file, _cb) {
               var vv = new Version(file)
               vv.extract(function (err, version) {
@@ -274,7 +274,7 @@ describe('change multiple files', function () {
       if (v.inc('minor')) {
         Version.changeFiles(files, v.version, function (err) {
           assert.equal(err.length, 1)
-          async.eachLimit(files, 5,
+          async.eachLimit(5, files,
             function (file, _cb) {
               var vv = new Version(file)
               vv.extract(function (err, version) { // eslint-disable-line handle-callback-err
@@ -297,11 +297,6 @@ describe('change multiple files', function () {
 
   it('from notthere.json', function (done) {
     var v = new Version(path.join(__dirname, 'tmp/notthere.json'))
-    var files = [ 'notthere.json', 'VERSION', 'package.json', 'file.js' ]
-
-    files = files.map(function (file) {
-      return path.join(__dirname, 'tmp', file)
-    })
 
     v.extract(function (err, version) { // eslint-disable-line handle-callback-err
       assert.equal(version, undefined)

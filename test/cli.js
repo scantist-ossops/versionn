@@ -7,7 +7,7 @@
 
 'use strict'
 
-/* global describe, it*/
+/* global describe, it */
 
 var assert = require('assert')
 var cli = require('../lib/cli')

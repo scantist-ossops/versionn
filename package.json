@@ -1,6 +1,6 @@
 {
   "name": "versionn",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "increase version number across package.json, component.json, bower.json and other files",
   "main": "lib/index.js",
   "bin": {
@@ -18,7 +18,7 @@
     "test": "test"
   },
   "scripts": {
-    "dist": "npm run lint && npm test && npm version",
+    "prepare": "npm run lint && npm test && npm version",
     "test": "mocha",
     "lint": "eslint '**/*.js'",
     "cover": "istanbul cover _mocha --report lcov --report text -- -R dot --check-leaks"
@@ -36,12 +36,12 @@
   "author": "commenthol",
   "license": "MIT",
   "dependencies": {
-    "asyncc": "^1.0.1",
-    "semver": "^5.3.0"
+    "asyncc": "^2.0.1",
+    "semver": "^5.5.0"
   },
   "devDependencies": {
-    "mocha": "^3.2.0",
-    "shelljs": "^0.7.5"
+    "mocha": "^5.0.1",
+    "shelljs": "^0.8.1"
   },
   "eslintConfig": {
     "extends": "standard",

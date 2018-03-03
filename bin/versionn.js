@@ -9,7 +9,7 @@
 
 'use strict'
 
-var VERSION = '1.0.0'
+var VERSION = '1.0.3'
 
 var fs = require('fs')
 var path = require('path')
@@ -70,9 +70,9 @@ function main (argv, callback) {
             }
           }
         })
-        .filter(function (file) {
-          return file
-        })
+          .filter(function (file) {
+            return file
+          })
 
         if (files.length > 0) {
           options.extract = options.extract
@@ -87,9 +87,8 @@ function main (argv, callback) {
     },
     // does file to extract exist
     function (cb) {
-      fs.exists(options.extract, function (exists) {
-        var err
-        if (!exists) {
+      fs.stat(options.extract, function (err) {
+        if (err) {
           err = new Error('No file to extract version from: ' + options.extract)
         }
         cb(err)
@@ -153,7 +152,7 @@ function main (argv, callback) {
         cb()
       }
     }],
-    callback
+  callback
   )
 }
 
