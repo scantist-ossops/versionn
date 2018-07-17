@@ -59,7 +59,7 @@ function main (argv, callback) {
   asyncc.series([
     // check if files exists
     function (cb) {
-      asyncc.each(options.files, fs.stat, function (err, files) {
+      asyncc.each(options.files, (file, cb) => fs.stat(file, cb), function (err, files) {
         err = null
         files = options.files.map(function (file, i) {
           if (files[i]) {
