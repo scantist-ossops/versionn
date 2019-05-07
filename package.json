@@ -1,6 +1,6 @@
 {
   "name": "versionn",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "increase version number across package.json, component.json, bower.json and other files",
   "main": "lib/index.js",
   "bin": {
