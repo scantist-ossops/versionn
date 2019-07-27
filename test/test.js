@@ -230,7 +230,7 @@ describe('change multiple files', function () {
 
   it('from VERSION', function (done) {
     var v = new Version(path.join(__dirname, 'tmp/VERSION'))
-    var files = [ 'VERSION', 'package.json', 'file.js' ]
+    var files = ['VERSION', 'package.json', 'file.js']
 
     files = files.map(function (file) {
       return path.join(__dirname, 'tmp', file)
@@ -262,7 +262,7 @@ describe('change multiple files', function () {
 
   it('from VERSION changes notthere.json', function (done) {
     var v = new Version(path.join(__dirname, 'tmp/VERSION'))
-    var files = [ 'VERSION', 'notthere.json', 'package.json', 'file.js' ]
+    var files = ['VERSION', 'notthere.json', 'package.json', 'file.js']
 
     files = files.map(function (file) {
       return path.join(__dirname, 'tmp', file)
