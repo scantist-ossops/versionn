@@ -2,40 +2,47 @@
   "name": "versionn",
   "version": "1.0.6",
   "description": "increase version number across package.json, component.json, bower.json and other files",
-  "main": "lib/index.js",
-  "bin": {
-    "versionn": "bin/versionn.js"
-  },
-  "man": "man/versionn.1",
-  "preferGlobal": true,
-  "maintainers": [
-    {
-      "name": "commenthol",
-      "email": "commenthol@gmail.com"
-    }
-  ],
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "prepublishOnly": "npm run all",
-    "all": "npm run lint && npm test && npm version",
-    "test": "mocha",
-    "lint": "eslint lib test",
-    "coverage": "nyc -r text npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/commenthol/versionn.git"
-  },
   "keywords": [
     "version",
     "component.json",
     "bower.json",
     "package.json"
   ],
-  "author": "commenthol",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commenthol/versionn.git"
+  },
   "license": "MIT",
+  "author": "commenthol",
+  "maintainers": [
+    {
+      "name": "commenthol",
+      "email": "commenthol@gmail.com"
+    }
+  ],
+  "main": "lib/index.js",
+  "bin": {
+    "versionn": "bin/versionn.js"
+  },
+  "man": "man/versionn.1",
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "man"
+  ],
+  "scripts": {
+    "all": "npm run lint && npm test && npm version",
+    "coverage": "nyc -r text npm test",
+    "lint": "eslint lib test",
+    "prepublishOnly": "npm run all",
+    "test": "mocha"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  },
   "dependencies": {
     "asyncc": "^2.0.6",
     "semver": "^7.3.8"
@@ -50,7 +57,5 @@
     "nyc": "^15.1.0",
     "shelljs": "^0.8.5"
   },
-  "eslintConfig": {
-    "extends": "standard"
-  }
+  "preferGlobal": true
 }
