@@ -9,42 +9,42 @@
 
 /* global describe, it, before, beforeEach */
 
-var assert = require('assert')
-var path = require('path')
-var async = require('asyncc')
-var sh = require('shelljs')
+const assert = require('assert')
+const path = require('path')
+const async = require('asyncc')
+const sh = require('shelljs')
 
-var Version = require('../lib/index')
+const Version = require('../lib/index')
 
-var fixtures = path.join(__dirname, 'fixtures')
+const fixtures = path.join(__dirname, 'fixtures')
 
 describe('#Version', function () {
-  var packageJson = path.join(fixtures, 'package.json')
+  const packageJson = path.join(fixtures, 'package.json')
 
   it('construct', function () {
-    var v = new Version(packageJson)
+    const v = new Version(packageJson)
     assert.ok(v instanceof Version)
   })
 
   it('construct without new', function () {
-    var v = Version(packageJson)
+    const v = Version(packageJson)
     assert.ok(v instanceof Version)
   })
 
   it('setVersion', function () {
-    var v = new Version(packageJson)
+    const v = new Version(packageJson)
     v.setVersion('0.0.0')
     assert.strictEqual(v.version, '0.0.0')
   })
 
   it('setVersion with bad semver', function () {
-    var v = new Version(packageJson)
+    const v = new Version(packageJson)
     v.setVersion('0a0.0')
     assert.strictEqual(v.version, undefined)
   })
 
   it('inc', function (done) {
-    var v = new Version(packageJson)
+    const v = new Version(packageJson)
     v.extract(function (err) {
       assert.ok(!err, '' + err)
       v.inc('patch')
@@ -54,7 +54,7 @@ describe('#Version', function () {
   })
 
   it('inc with bad semver command', function (done) {
-    var v = new Version(packageJson)
+    const v = new Version(packageJson)
     v.extract(function (err) {
       assert.ok(!err, '' + err)
       v.inc('patchit')
@@ -74,7 +74,7 @@ describe('#Version', function () {
 
 describe('readFile', function () {
   it('extract with error ', function (done) {
-    var v = new Version(path.join(fixtures, 'notthere.json'))
+    const v = new Version(path.join(fixtures, 'notthere.json'))
     v.extract(function (err) {
       assert.strictEqual(err.code, 'ENOENT')
       done()
@@ -82,7 +82,7 @@ describe('readFile', function () {
   })
 
   it('extract from bad json file ', function (done) {
-    var v = new Version(path.join(fixtures, 'packagebad.json'))
+    const v = new Version(path.join(fixtures, 'packagebad.json'))
     v.extract(function (err) {
       assert.ok(err.message.indexOf('Unexpected string in JSON at') === 0, err.message)
       done()
@@ -90,7 +90,7 @@ describe('readFile', function () {
   })
 
   it('package.json', function (done) {
-    var v = new Version(path.join(fixtures, 'package.json'))
+    const v = new Version(path.join(fixtures, 'package.json'))
     v.extract(function (err, version) {
       assert.ok(!err, '' + err)
       assert.strictEqual(version, '0.3.6')
@@ -99,7 +99,7 @@ describe('readFile', function () {
   })
 
   it('VERSION', function (done) {
-    var v = new Version(path.join(fixtures, 'VERSION'))
+    const v = new Version(path.join(fixtures, 'VERSION'))
     v.extract(function (err, version) {
       assert.ok(!err, '' + err)
       assert.strictEqual(version, '1.0.3-12')
@@ -108,7 +108,7 @@ describe('readFile', function () {
   })
 
   it('file.js', function (done) {
-    var v = new Version(path.join(fixtures, 'file.js'))
+    const v = new Version(path.join(fixtures, 'file.js'))
     v.extract(function (err, version) {
       assert.ok(!err, '' + err)
       assert.strictEqual(version, '5.0.23')
@@ -124,7 +124,7 @@ describe('change files', function () {
   })
 
   it('change with error', function () {
-    var v = new Version(path.join(__dirname, 'fixtures/notthere.json'))
+    const v = new Version(path.join(__dirname, 'fixtures/notthere.json'))
     v.setVersion('0.0.1')
     v.change(function (err) {
       assert.strictEqual(err.code, 'ENOENT')
@@ -132,7 +132,7 @@ describe('change files', function () {
   })
 
   it('package.json', function (done) {
-    var v = new Version(path.join(__dirname, 'tmp/package.json'))
+    const v = new Version(path.join(__dirname, 'tmp/package.json'))
     v.extract(function (err, version) {
       assert.ok(!err, '' + err)
       assert.strictEqual(version, '0.3.6')
@@ -153,7 +153,7 @@ describe('change files', function () {
   })
 
   it('VERSION', function (done) {
-    var v = new Version(path.join(__dirname, 'tmp/VERSION'))
+    const v = new Version(path.join(__dirname, 'tmp/VERSION'))
     v.extract(function (err, version) {
       assert.ok(!err, '' + err)
       assert.strictEqual(version, '1.0.3-12')
@@ -174,7 +174,7 @@ describe('change files', function () {
   })
 
   it('file.js', function (done) {
-    var v = new Version(path.join(__dirname, 'tmp/file.js'))
+    const v = new Version(path.join(__dirname, 'tmp/file.js'))
     v.extract(function (err, version) {
       assert.ok(!err, '' + err)
       assert.strictEqual(version, '5.0.23')
@@ -201,7 +201,7 @@ describe('change files with modifier', function () {
   })
 
   it('change package.json using --same', function (done) {
-    var v = new Version(path.join(__dirname, 'tmp/package.json'))
+    const v = new Version(path.join(__dirname, 'tmp/package.json'))
     v.extract(function (err, version) {
       assert.ok(!err, '' + err)
       assert.strictEqual(version, '0.3.6')
@@ -229,8 +229,8 @@ describe('change multiple files', function () {
   })
 
   it('from VERSION', function (done) {
-    var v = new Version(path.join(__dirname, 'tmp/VERSION'))
-    var files = ['VERSION', 'package.json', 'file.js']
+    const v = new Version(path.join(__dirname, 'tmp/VERSION'))
+    let files = ['VERSION', 'package.json', 'file.js']
 
     files = files.map(function (file) {
       return path.join(__dirname, 'tmp', file)
@@ -244,7 +244,7 @@ describe('change multiple files', function () {
           assert.strictEqual(err.length, 0)
           async.eachLimit(5, files,
             function (file, _cb) {
-              var vv = new Version(file)
+              const vv = new Version(file)
               vv.extract(function (err, version) {
                 assert.ok(!err, '' + err)
                 assert.strictEqual(version, v.version)
@@ -261,8 +261,8 @@ describe('change multiple files', function () {
   })
 
   it('from VERSION changes notthere.json', function (done) {
-    var v = new Version(path.join(__dirname, 'tmp/VERSION'))
-    var files = ['VERSION', 'notthere.json', 'package.json', 'file.js']
+    const v = new Version(path.join(__dirname, 'tmp/VERSION'))
+    let files = ['VERSION', 'notthere.json', 'package.json', 'file.js']
 
     files = files.map(function (file) {
       return path.join(__dirname, 'tmp', file)
@@ -276,8 +276,8 @@ describe('change multiple files', function () {
           assert.strictEqual(err.length, 1)
           async.eachLimit(5, files,
             function (file, _cb) {
-              var vv = new Version(file)
-              vv.extract(function (err, version) { // eslint-disable-line handle-callback-err
+              const vv = new Version(file)
+              vv.extract(function (_err, version) {
                 if (~file.indexOf('notthere.json')) {
                   assert.strictEqual(version, undefined)
                 } else {
@@ -296,9 +296,10 @@ describe('change multiple files', function () {
   })
 
   it('from notthere.json', function (done) {
-    var v = new Version(path.join(__dirname, 'tmp/notthere.json'))
+    const v = new Version(path.join(__dirname, 'tmp/notthere.json'))
 
-    v.extract(function (err, version) { // eslint-disable-line handle-callback-err
+    v.extract(function (err, version) {
+      assert.strictEqual(err.code, 'ENOENT')
       assert.strictEqual(version, undefined)
       try {
         v.inc('same')
