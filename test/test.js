@@ -309,4 +309,14 @@ describe('change multiple files', function () {
       done()
     })
   })
+
+  it('shall throw if not a valid version', function (done) {
+    const gitFn = new Version._.GitFn('& touch newFile', { dir: './' })
+    try {
+      gitFn.tag(done)
+    } catch (e) {
+      assert.strictEqual(e.message, 'version is invalid')
+      done()
+    }
+  })
 })
