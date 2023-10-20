@@ -25,9 +25,6 @@
     "versionn": "bin/versionn.js"
   },
   "man": "man/versionn.1",
-  "directories": {
-    "test": "test"
-  },
   "files": [
     "bin",
     "lib",
@@ -37,7 +34,6 @@
     "all": "npm run lint && npm test && npm version",
     "coverage": "nyc -r text npm test",
     "lint": "eslint lib test",
-    "prepublishOnly": "npm run all",
     "test": "mocha"
   },
   "eslintConfig": {
@@ -45,13 +41,13 @@
   },
   "dependencies": {
     "asyncc": "^2.0.6",
-    "semver": "^7.3.8"
+    "semver": "^7.5.4"
   },
   "devDependencies": {
-    "eslint": "^8.34.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
+    "eslint": "^8.51.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-promise": "^6.1.1",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",

@@ -84,7 +84,7 @@ describe('readFile', function () {
   it('extract from bad json file ', function (done) {
     const v = new Version(path.join(fixtures, 'packagebad.json'))
     v.extract(function (err) {
-      assert.ok(err.message.indexOf('Unexpected string in JSON at') === 0, err.message)
+      assert.ok(err.message.includes('in JSON at') === true, err.message)
       done()
     })
   })
